@@ -1,14 +1,4 @@
-# ARK Explorer
-
-<p align="center">
-    <img src="./banner.png" />
-</p>
-
-[![Build Status](https://badgen.now.sh/github/status/ArkEcosystem/explorer/develop)](https://github.com/ArkEcosystem/explorer/actions?query=branch%3Adevelop)
-[![Codecov](https://badgen.now.sh/codecov/c/github/arkecosystem/explorer)](https://codecov.io/gh/arkecosystem/explorer)
-[![License: MIT](https://badgen.now.sh/badge/license/MIT/green)](https://opensource.org/licenses/MIT)
-
-> Lead Maintainer: [Michel Kraaijeveld](https://github.com/ItsANameToo)
+# Solar Explorer
 
 ## Installation
 
@@ -16,6 +6,7 @@
 
 -   [Composer](https://getcomposer.org)
 -   [Valet](https://laravel.com/docs/8.x/valet) or [Homestead](https://laravel.com/docs/8.x/homestead)
+-   `CORE_WALLET_SYNC_ENABLED=true` on the node .env
 
 
 ## Development
