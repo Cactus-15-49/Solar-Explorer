@@ -15,4 +15,6 @@ final class CryptoCurrencies
     public const ARK = 'ARK';
 
     public const DARK = 'DARK';
+
+    public const DSXP = "dSXP";
 }

@@ -7,19 +7,15 @@ services:
     image: explorer
     container_name: ark-explorer 
     restart: always
-    ports:
-      - '8898:8898'
     working_dir: /var/www/explorer
-    networks:
-      - explorer 
     volumes:
       - explorer:/var/www/explorer
     tty: true
-networks:
-  explorer:
+    network_mode: host
 volumes:
   explorer:
     driver_opts:
       type: none
       device: $PWD/../
-      o: bind 
+      o: bind
+      
