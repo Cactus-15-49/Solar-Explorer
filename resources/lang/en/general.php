@@ -72,7 +72,7 @@ return [
             'business-entity-registration'        => 'Business Registration',
             'business-entity-resignation'         => 'Business Resignation',
             'business-entity-update'              => 'Business Update',
-            'legacy-business-registration'        => 'Legacy Business Registration',
+            'legacy-business-registration'        => 'Burn',
             'legacy-business-resignation'         => 'Legacy Business Resignation',
             'legacy-business-update'              => 'Legacy Business Update',
             'ipfs'                                => 'IPFS',
