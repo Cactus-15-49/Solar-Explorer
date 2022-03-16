@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 sudo chown -R explorer:www-data /var/www/explorer
+sudo chown -R explorer:www-data /run/postgresql
+sudo chmod -R 770 /run/postgresql
 touch database/database.sqlite
 #--- run installs
 composer install --ignore-platform-reqs

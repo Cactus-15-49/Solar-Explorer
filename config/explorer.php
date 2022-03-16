@@ -35,6 +35,7 @@ return [
             'currency'         => env('EXPLORER_NETWORK_CURRENCY', 'DARK'),
             'currencySymbol'   => env('EXPLORER_NETWORK_CURRENCY_SYMBOL', 'DѦ'),
             'confirmations'    => intval(env('EXPLORER_NETWORK_CONFIRMATIONS', 51)),
+            'knownWallets'     => env('EXPLORER_NETWORK_KNOWN_WALLETS', 'https://raw.githubusercontent.com/ArkEcosystem/common/master/mainnet/known-wallets-extended.json'),
             'canBeExchanged'   => env('EXPLORER_NETWORK_CAN_BE_EXCHANGED', false),
             'hasTimelock'      => env('EXPLORER_NETWORK_HAS_TIMELOCK', true),
             'epoch'            => env('EXPLORER_NETWORK_EPOCH', '2017-03-21T13:00:00.000Z'),

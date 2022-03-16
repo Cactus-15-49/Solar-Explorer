@@ -16,5 +16,5 @@ final class CryptoCurrencies
 
     public const DARK = 'DARK';
 
-    public const DSXP = "dSXP";
+    public const TSXP = "tSXP";
 }

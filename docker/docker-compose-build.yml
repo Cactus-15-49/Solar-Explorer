@@ -10,6 +10,7 @@ services:
     working_dir: /var/www/explorer
     volumes:
       - explorer:/var/www/explorer
+      - /home/cactus1549/.local/share/solar-core/testnet/database:/run/postgresql
     tty: true
     network_mode: host
 volumes:
