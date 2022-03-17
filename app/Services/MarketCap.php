@@ -45,9 +45,9 @@ final class MarketCap
             );
     }
 
-    private static function getSupply(): float
+    private static function getSupply(): string
     {
-        return CacheNetworkSupply::execute() / 1e8;
+        return bcdiv(CacheNetworkSupply::execute(), "100000000", 8);
     }
 
     private static function getPrice(string $source, string $target): ? float

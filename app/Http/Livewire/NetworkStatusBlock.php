@@ -24,7 +24,7 @@ final class NetworkStatusBlock extends Component
         return view('livewire.network-status-block', [
             'height'      => CacheNetworkHeight::execute(),
             'network'     => Network::name(),
-            'supply'      => CacheNetworkSupply::execute() / 1e8,
+            'supply'      => bcdiv(CacheNetworkSupply::execute(), "100000000", 8),
             'marketCap'   => MarketCap::getFormatted(Network::currency(), Settings::currency()),
         ]);
     }

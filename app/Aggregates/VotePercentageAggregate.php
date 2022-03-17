@@ -18,7 +18,7 @@ final class VotePercentageAggregate implements Aggregate
                 ->where('balance', '>', 0)
                 ->whereNotNull('attributes->vote')
                 ->sum('balance'),
-            CacheNetworkSupply::execute()
+            (float) CacheNetworkSupply::execute()
         );
     }
 }

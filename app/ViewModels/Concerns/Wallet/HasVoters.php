@@ -20,7 +20,7 @@ trait HasVoters
     {
         $voteBalance = (float) $this->wallet->attributes['delegate']['voteBalance'];
 
-        return Percentage::calculate($voteBalance, CacheNetworkSupply::execute());
+        return Percentage::calculate($voteBalance, (float) CacheNetworkSupply::execute());
     }
 
     public function voterCount(): int

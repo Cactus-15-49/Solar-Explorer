@@ -9,10 +9,10 @@ use App\Services\Cache\NetworkCache;
 
 final class CacheNetworkSupply
 {
-    public static function execute(): float
+    public static function execute(): string
     {
-        return (new NetworkCache())->setSupply(function (): float {
-            return (float) Wallet::where('balance', '>', 0)->sum('balance');
+        return (new NetworkCache())->setSupply(function (): string {
+            return Wallet::where('balance', '>', 0)->sum('balance');
         });
     }
 }

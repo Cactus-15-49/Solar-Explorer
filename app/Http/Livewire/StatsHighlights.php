@@ -38,9 +38,9 @@ final class StatsHighlights extends Component
 
     private function getTotalSupply(): string
     {
-        $supply = CacheNetworkSupply::execute() / 1e8;
+        $supply = bcdiv(CacheNetworkSupply::execute(), "100000000", 8);
 
-        return NumberFormatter::number($supply);
+        return $supply;
     }
 
     private function getVotingPercent(): string
