@@ -38,7 +38,7 @@ final class StatsHighlights extends Component
 
     private function getTotalSupply(): string
     {
-        $supply = bcdiv(CacheNetworkSupply::execute(), "100000000", 8);
+        $supply = bcdiv(CacheNetworkSupply::execute(), "100000000", 0);
 
         return $supply;
     }
