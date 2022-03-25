@@ -38,7 +38,7 @@ return [
             'transfer'             => 'Transfer',
             'vote'                 => 'Vote',
             'voteCombination'      => 'Switch Vote',
-            'magistrate'           => 'Magistrate',
+            'magistrate'           => 'Burn',
         ],
 
     ],
