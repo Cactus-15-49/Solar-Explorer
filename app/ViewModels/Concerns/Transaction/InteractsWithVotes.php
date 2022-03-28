@@ -21,7 +21,11 @@ trait InteractsWithVotes
             ->filter(fn ($vote) => Str::startsWith($vote, '+'))
             ->first();
 
-        return new WalletViewModel(Wallets::findByPublicKey(substr($publicKey, 1)));
+        if (strlen($publicKey) === 67) {
+            return new WalletViewModel(Wallets::findByPublicKey(substr($publicKey, 1)));
+        }
+
+        return new WalletViewModel(Wallets::findByUsername(substr($publicKey, 1)));
     }
 
     public function unvoted(): ?WalletViewModel
@@ -34,6 +38,10 @@ trait InteractsWithVotes
             ->filter(fn ($vote) => Str::startsWith($vote, '-'))
             ->first();
 
-        return new WalletViewModel(Wallets::findByPublicKey(substr($publicKey, 1)));
+        if (strlen($publicKey) === 67) {
+            return new WalletViewModel(Wallets::findByPublicKey(substr($publicKey, 1)));
+        }
+
+        return new WalletViewModel(Wallets::findByUsername(substr($publicKey, 1)));
     }
 }
