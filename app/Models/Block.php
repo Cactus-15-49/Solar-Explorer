@@ -57,6 +57,7 @@ final class Block extends Model
         'timestamp'              => 'int',
         'total_amount'           => BigInteger::class,
         'total_fee'              => BigInteger::class,
+        'burned_fee'             => BigInteger::class,
     ];
 
     /**

@@ -35,13 +35,13 @@ trait HasTransactions
 
     public function totalReward(): float
     {
-        return  $this->block->reward->plus($this->block->total_fee->valueOf())->toFloat();
+        return  $this->block->reward->plus($this->block->total_fee->valueOf())->minus($this->block->burned_fee->valueOf())->toFloat();
     }
 
     public function totalRewardFiat(): string
     {
         return ExchangeRate::convert(
-            $this->block->reward->plus($this->block->total_fee->valueOf())->toFloat(),
+            $this->block->reward->plus($this->block->total_fee->valueOf())->minus($this->block->burned_fee->valueOf())->toFloat(),
             $this->block->timestamp
         );
     }
