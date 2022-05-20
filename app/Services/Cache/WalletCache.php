@@ -105,6 +105,16 @@ final class WalletCache implements Contract
         $this->put(sprintf('username_by_public_key/%s', $publicKey), $username);
     }
 
+    public function getPublicKeyByUsername(string $username): ?string
+    {
+        return $this->get(sprintf('public_key_by_username/%s', $username));
+    }
+
+    public function setPublicKeyByUsername(string $username, string $publicKey): void
+    {
+        $this->put(sprintf('public_key_by_username/%s', $username), $publicKey);
+    }
+
     public function getDelegate(string $publicKey): Wallet
     {
         return $this->get(sprintf('delegate/%s', $publicKey));
