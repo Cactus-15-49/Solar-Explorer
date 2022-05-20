@@ -27,7 +27,15 @@ trait CanVote
             return null;
         }
 
-        $delegate = (new WalletCache())->getVote($vote);
+        $cache = new WalletCache();
+
+        $public_key = $cache->getPublicKeyByUsername($vote); 
+
+        if (is_null($public_key)) {
+            return null;
+        }
+        
+        $delegate = $cache->getVote($public_key);
 
         if (is_null($delegate)) {
             return null;
@@ -48,7 +56,15 @@ trait CanVote
             return null;
         }
 
-        $delegate = (new WalletCache())->getVote($vote);
+        $cache = new WalletCache();
+
+        $public_key = $cache->getPublicKeyByUsername($vote); 
+
+        if (is_null($public_key)) {
+            return null;
+        }
+
+        $delegate = $cache->getVote($public_key);
 
         if (is_null($delegate)) {
             return null;
