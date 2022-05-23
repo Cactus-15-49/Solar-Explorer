@@ -43,7 +43,7 @@ final class CacheDelegateVoterCounts extends Command
             ->selectRaw(implode(', ', $select))
             ->join(
                 'wallets as voters',
-                'wallets.public_key',
+                (string) DB::raw('wallets.attributes->delegate->>username'),
                 (string) DB::raw('voters.attributes->vote')
             )
             ->groupBy('wallets.public_key')

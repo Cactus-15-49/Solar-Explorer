@@ -31,7 +31,7 @@ final class WalletVoterTable extends Component
     public function render(): View
     {
         return view('livewire.wallet-voter-table', [
-            'wallets' => ViewModelFactory::paginate(Wallet::where('attributes->vote', $this->publicKey)->withScope(OrderByBalanceScope::class)->paginate()),
+            'wallets' => ViewModelFactory::paginate(Wallet::where('attributes->vote', $this->username)->withScope(OrderByBalanceScope::class)->paginate()),
         ]);
     }
 }
