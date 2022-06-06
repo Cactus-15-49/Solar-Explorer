@@ -11,21 +11,36 @@ use Illuminate\Support\Str;
 
 trait InteractsWithVotes
 {
-    public function voted(): ?WalletViewModel
+    public function count(): ?int
     {
-        if (! $this->isVote()) {
+        if (! $this->isLegacyBusinessUpdate()) {
             return null;
         }
 
-        $publicKey = collect(Arr::get($this->transaction->asset ?? [], 'votes'))
-            ->filter(fn ($vote) => Str::startsWith($vote, '+'))
-            ->first();
+        return count($this->transaction->asset["votes"]);
+    }
 
-        if (strlen($publicKey) === 67) {
-            return new WalletViewModel(Wallets::findByPublicKey(substr($publicKey, 1)));
+    public function voted(): ?WalletViewModel
+    {
+        if (! $this->isVote() && ! $this->isLegacyBusinessUpdate()) {
+            return null;
         }
 
-        return new WalletViewModel(Wallets::findByUsername(substr($publicKey, 1)));
+        $votes = $this->transaction->asset["votes"];
+
+        if (isset($votes[0])) {
+            $publicKey = collect(Arr::get($this->transaction->asset ?? [], 'votes'))
+                ->filter(fn ($vote) => Str::startsWith($vote, '+'))
+                ->first();
+
+            if (strlen($publicKey) === 67) {
+                return new WalletViewModel(Wallets::findByPublicKey(substr($publicKey, 1)));
+            }
+
+            return new WalletViewModel(Wallets::findByUsername(substr($publicKey, 1)));
+        }
+
+        return new WalletViewModel(Wallets::findByUsername(array_key_first($votes)));
     }
 
     public function unvoted(): ?WalletViewModel

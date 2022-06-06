@@ -5,7 +5,11 @@
 
             <x-tables.rows.mobile.wallet-type :model="$wallet" />
 
-            <x-tables.rows.mobile.balance :model="$wallet" />
+            @isset($useVoteWeight)
+                <x-tables.rows.mobile.vote-balance :model="$wallet" />
+            @else
+                <x-tables.rows.mobile.balance :model="$wallet" />
+            @endif
 
             @isset($useVoteWeight)
                 <x-tables.rows.mobile.vote-percentage :model="$wallet" />

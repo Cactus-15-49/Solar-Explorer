@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Console\Commands;
 
-use App\Facades\Wallets;
+use App\Models\Wallet;
 use App\Services\Cache\WalletCache;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
@@ -34,21 +34,11 @@ final class CacheDelegateVoterCounts extends Command
     {
         $walletCache = new WalletCache();
 
-        $select = [
-            'wallets.public_key',
-            'COUNT(voters.public_key) total',
-        ];
-
-        $results = Wallets::allWithUsername()
-            ->selectRaw(implode(', ', $select))
-            ->join(
-                'wallets as voters',
-                (string) DB::raw('wallets.attributes->delegate->>username'),
-                (string) DB::raw('voters.attributes->vote')
-            )
-            ->groupBy('wallets.public_key')
-            ->pluck('total', 'public_key');
-
-        $results->each(fn ($total, $publicKey) => $walletCache->setVoterCount($publicKey, $total));
+        $results = Wallet::query()
+            ->selectRaw('delegate, count(delegate) as total')
+            ->crossJoin(DB::raw('lateral jsonb_each_text(attributes->\'votes\') json(delegate)'))
+            ->groupBy('delegate')
+            ->pluck('total', 'delegate');
+        $results->each(fn ($total, $delegate) => $walletCache->setVoterCount($delegate, $total));
     }
 }

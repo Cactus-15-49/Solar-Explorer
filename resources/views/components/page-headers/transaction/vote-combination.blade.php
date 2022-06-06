@@ -1,4 +1,21 @@
-<x-page-headers.transaction.icon-type :model="$transaction" />
+<x-general.entity-header-item
+    :title="trans('pages.transaction.transaction_type')"
+    icon="app-transactions.vote"
+    :wrapper-class="$wrapperClass ?? ''"
+>
+    <x-slot name="text">
+        Vote
+    </x-slot>
+</x-general.entity-header-item>
+
+<x-general.entity-header-item
+    title="Voting For"
+    icon="app-rank"
+>
+    <x-slot name="text">
+        1 Delegate
+    </x-slot>
+</x-general.entity-header-item>
 
 <x-general.entity-header-item
     :title="trans('pages.transaction.fee')"

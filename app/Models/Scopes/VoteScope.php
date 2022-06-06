@@ -16,5 +16,7 @@ final class VoteScope implements Scope
     {
         $builder->where('type_group', TransactionTypeGroupEnum::CORE);
         $builder->where('type', CoreTransactionTypeEnum::VOTE);
+        $builder->orWhere('type_group', TransactionTypeGroupEnum::MAGISTRATE);
+        $builder->where('type', 2);
     }
 }

@@ -9,10 +9,11 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Scope;
 
-final class MagistrateScope implements Scope
+final class BurnScope implements Scope
 {
     public function apply(Builder $builder, Model $model)
     {
         $builder->where('type_group', TransactionTypeGroupEnum::MAGISTRATE);
+        $builder->where('type', 0);
     }
 }

@@ -1,10 +1,15 @@
+@php ($voteCount = count($transaction->votes()))
 <x-general.entity-header-item
     :title="trans('pages.transaction.transaction_type')"
-    icon="app-transactions.unvote"
+    :icon="$voteCount > 0 ? 'app-transactions.vote' : 'app-transactions.unvote'"
     :wrapper-class="$wrapperClass ?? ''"
 >
     <x-slot name="text">
-        Cancel Vote
+        @if ($voteCount > 0)
+            Vote
+        @else
+            Cancel Vote
+        @endif
     </x-slot>
 </x-general.entity-header-item>
 
@@ -13,7 +18,11 @@
     icon="app-rank"
 >
     <x-slot name="text">
-        0 Delegates
+        @if ($voteCount === 1)
+            {{ $voteCount }} Delegate
+        @else
+            {{ $voteCount }} Delegates
+        @endif
     </x-slot>
 </x-general.entity-header-item>
 

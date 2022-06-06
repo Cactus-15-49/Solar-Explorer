@@ -17,7 +17,11 @@
                     <x-tables.rows.desktop.wallet-type :model="$wallet" />
                 </x-ark-tables.cell>
                 <x-ark-tables.cell class="text-right">
-                    <x-tables.rows.desktop.balance :model="$wallet" />
+                    @isset($useVoteWeight)
+                        <x-tables.rows.desktop.vote-balance :model="$wallet" />
+                    @else
+                        <x-tables.rows.desktop.balance :model="$wallet" />
+                    @endif
                 </x-ark-tables.cell>
                 <x-ark-tables.cell class="text-right">
                     @isset($useVoteWeight)
