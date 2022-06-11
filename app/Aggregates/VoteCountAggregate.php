@@ -13,7 +13,7 @@ final class VoteCountAggregate implements Aggregate
     {
         return (string) (Wallet::query()
             ->where('balance', '>', 0)
-            ->whereNotNull('attributes->vote')
+            ->where('attributes->votes', '<>', '{}')
             ->sum('balance') / 1e8);
     }
 }

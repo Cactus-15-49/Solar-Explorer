@@ -22,7 +22,7 @@ final class WalletRepository implements Contract
 
     public function allWithVote(): Builder
     {
-        return Wallet::whereNotNull('attributes->vote')->orderBy('balance');
+        return Wallet::where('attributes->votes', '<>', '{}')->orderBy('balance');
     }
 
     public function allWithPublicKey(): Builder

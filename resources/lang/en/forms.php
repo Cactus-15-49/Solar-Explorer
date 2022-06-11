@@ -37,8 +37,7 @@ return [
             'timelock'             => 'Timelock',
             'transfer'             => 'Transfer',
             'vote'                 => 'Vote',
-            'voteCombination'      => 'Switch Vote',
-            'magistrate'           => 'Burn',
+            'burn'                 => 'Burn',
         ],
 
     ],

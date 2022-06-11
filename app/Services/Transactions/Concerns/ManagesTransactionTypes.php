@@ -20,9 +20,7 @@ trait ManagesTransactionTypes
         'isTimelock'                      => 'timelock',
         'isTimelockClaim'                 => 'timelock-claim',
         'isTimelockRefund'                => 'timelock-refund',
-        'isEntityRegistration'            => 'entity-registration',
-        'isEntityResignation'             => 'entity-resignation',
-        'isEntityUpdate'                  => 'entity-update',
+        'isLegacyBusinessUpdate'          => 'legacy-business-update',
     ];
 
     private array $typesExact = [

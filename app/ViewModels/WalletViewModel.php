@@ -69,4 +69,9 @@ final class WalletViewModel implements ViewModel
     {
         return $this->wallet->nonce->toNumber();
     }
+
+    public function votesAttribute()
+    {
+        return $this->wallet->attributes['votes'];
+    }
 }

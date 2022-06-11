@@ -162,4 +162,9 @@ final class TransactionViewModel implements ViewModel
     {
         return Arr::get($this->transaction, 'asset.ipfs');
     }
+
+    public function votes()
+    {
+        return Arr::get($this->transaction, 'asset.votes');
+    }
 }

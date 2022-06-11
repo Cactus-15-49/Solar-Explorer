@@ -25,12 +25,12 @@ trait HasVoters
 
     public function voterCount(): int
     {
-        $publicKey = $this->publicKey();
+        $username = $this->wallet->attributes['delegate']['username'];
 
-        if (is_null($publicKey)) {
+        if (is_null($username)) {
             return 0;
         }
 
-        return (new WalletCache())->getVoterCount($publicKey);
+        return (new WalletCache())->getVoterCount($username);
     }
 }
