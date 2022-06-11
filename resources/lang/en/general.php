@@ -93,7 +93,7 @@ return [
             'timelock-claim'                      => 'Timelock Claim',
             'timelock-refund'                     => 'Timelock Refund',
             'transfer'                            => 'Transfer',
-            'unvote'                              => 'Stop Voting',
+            'unvote'                              => 'Cancel Vote',
             'vote'                                => 'Vote',
             'unknown'                             => 'Unknown',
 
