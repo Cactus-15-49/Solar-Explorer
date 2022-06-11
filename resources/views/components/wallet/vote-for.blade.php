@@ -9,9 +9,7 @@
                 >
                     <x-slot name="text">
                         @foreach ($vote as $delegate)
-                            <span style="display: inline-block; white-space: nowrap"><a href="/wallets/{{ $delegate->address() }}" class="leading-tight link">
-                                <span class="truncate">{{ $delegate->username() }}</span>
-                            </a>&nbsp;<span class="text-sm text-theme-secondary-500 dark:text-theme-secondary-700" style="margin: 0 6px 0 2px">({{ number_format($wallet->votesAttribute()[$delegate->username()], 2) }}%)</span></span>
+                            <span style="display: inline-block; white-space: nowrap"><a href="/wallets/{{ $delegate->address() }}" class="leading-tight link"><span class="truncate">{{ $delegate->username() }}</span></a>&nbsp;<span class="text-sm text-theme-secondary-500 dark:text-theme-secondary-700" style="margin: 0 6px 0 2px">({{ number_format($wallet->votesAttribute()[$delegate->username()], 2) }}%)</span></span>
                         @endforeach
                     </x-slot>
                 </x-general.entity-header-item>
