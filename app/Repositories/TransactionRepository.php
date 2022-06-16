@@ -16,7 +16,7 @@ final class TransactionRepository implements Contract
         return Transaction::query()
             ->where(fn ($query): Builder   => $query->where('sender_public_key', $publicKey))
             ->orWhere(fn ($query): Builder => $query->where('recipient_id', $address))
-            ->orWhere(fn ($query): Builder => $query->whereJsonContains('asset->payments', [['recipientId' => $address]]))
+            ->orWhere(fn ($query): Builder => $query->whereJsonContains('asset->transfers', [['recipientId' => $address]]))
             ->get();
     }
 
@@ -29,7 +29,7 @@ final class TransactionRepository implements Contract
     {
         return Transaction::query()
             ->orWhere(fn ($query): Builder => $query->where('recipient_id', $address))
-            ->orWhere(fn ($query): Builder => $query->whereJsonContains('asset->payments', [['recipientId' => $address]]))
+            ->orWhere(fn ($query): Builder => $query->whereJsonContains('asset->transfers', [['recipientId' => $address]]))
             ->get();
     }
 

@@ -52,7 +52,7 @@ final class TransactionSearch implements Search
                     });
 
                     $query->orWhere(function ($query) use ($parameters, $wallet): void {
-                        $query->whereJsonContains('asset->payments', [['recipientId' => $wallet->address]]);
+                        $query->whereJsonContains('asset->transfers', [['recipientId' => $wallet->address]]);
 
                         $this->applyScopes($query, $parameters);
                     });

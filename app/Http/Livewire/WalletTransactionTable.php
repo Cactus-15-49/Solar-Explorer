@@ -89,7 +89,7 @@ final class WalletTransactionTable extends Component
         });
 
         $query->orWhere(function ($query): void {
-            $query->whereJsonContains('asset->payments', [['recipientId' => $this->state['address']]]);
+            $query->whereJsonContains('asset->transfers', [['recipientId' => $this->state['address']]]);
 
             $this->applyTypeScope($query);
         });
@@ -108,7 +108,7 @@ final class WalletTransactionTable extends Component
         });
 
         $query->orWhere(function ($query): void {
-            $query->whereJsonContains('asset->payments', [['recipientId' => $this->state['address']]]);
+            $query->whereJsonContains('asset->transfers', [['recipientId' => $this->state['address']]]);
 
             $this->applyTypeScope($query);
         });
