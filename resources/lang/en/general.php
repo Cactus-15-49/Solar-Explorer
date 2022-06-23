@@ -52,7 +52,7 @@ return [
         'fee'                     => 'Fee',
         'confirmations'           => 'Confirmations',
         'block_id'                => 'Block ID',
-        'smartbridge'             => 'SmartBridge',
+        'smartbridge'             => 'Memo',
         'nonce'                   => 'Nonce',
         'multi_signature_address' => 'Multisignature Address',
         'participant'             => 'Participant #:0',

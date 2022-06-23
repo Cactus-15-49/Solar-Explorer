@@ -102,7 +102,7 @@ final class TransactionSearch implements Search
         TimestampRangeComposer::compose($query, $parameters);
 
         if (! is_null(Arr::get($parameters, 'smartBridge'))) {
-            $query->where('vendor_field', $parameters['smartBridge']);
+            $query->where('memo', $parameters['smartBridge']);
         }
     }
 }
