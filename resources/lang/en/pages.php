@@ -118,7 +118,7 @@ return [
         'commission'            => 'Commission',
         'balance'               => 'Balance',
         'amount'                => 'Amount',
-        'smartbridge'           => 'Smartbridge',
+        'smartbridge'           => 'Memo',
         'vote_rank'             => '#:0',
         'status'                => 'Status',
         'productivity'          => 'Productivity',
