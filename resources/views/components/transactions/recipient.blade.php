@@ -71,7 +71,17 @@
                 <x-transactions.icon :icon-type="$iconType" />
 
                 <div class="mr-4 font-semibold md:mr-0 md:ml-4 text-theme-secondary-900 dark:text-theme-secondary-200">
-                    @lang('general.transaction.types.'.$transaction->typeName())
+                    @if ($transaction->isDelegateResignation())
+                        @if ($transaction->resignationType() === 2)
+                            Revoke Resignation
+                        @elseif ($transaction->resignationType() === 1)
+                            Permanent Resignation
+                        @else
+                            Temporary Resignation
+                        @endif
+                    @else
+                        @lang('general.transaction.types.'.$transaction->typeName())
+                    @endif
 
                     @if ($transaction->isMultiPayment())
                         <span class="ml-1 text-theme-secondary-600">{{ $transaction->recipientsCount() }}</span>
