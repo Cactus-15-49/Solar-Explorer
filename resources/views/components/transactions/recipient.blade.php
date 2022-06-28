@@ -45,6 +45,8 @@
                     </div>
                 </div>
             @endif
+        @elseif ($transaction->isMultiPayment() && $transaction->recipientsCount() === 1)
+            <x-general.identity :model="$transaction->recipient()" />
         @elseif ($transaction->isVote())
             <x-general.identity :model="$transaction->voted()">
                 <x-slot name="icon">

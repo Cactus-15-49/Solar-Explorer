@@ -17,7 +17,6 @@ final class Forms
         'vote',
         'multiSignature',
         'ipfs',
-        'multiPayment',
         'timelock',
         'timelockClaim',
         'timelockRefund',

@@ -11,7 +11,6 @@ use App\Models\Scopes\BurnScope;
 use App\Models\Scopes\DelegateRegistrationScope;
 use App\Models\Scopes\DelegateResignationScope;
 use App\Models\Scopes\IpfsScope;
-use App\Models\Scopes\MultiPaymentScope;
 use App\Models\Scopes\MultiSignatureScope;
 use App\Models\Scopes\SecondSignatureScope;
 use App\Models\Scopes\TimelockClaimScope;
@@ -57,7 +56,6 @@ final class Transaction extends Model
         'delegateRegistration'          => DelegateRegistrationScope::class,
         'delegateResignation'           => DelegateResignationScope::class,
         'ipfs'                          => IpfsScope::class,
-        'multiPayment'                  => MultiPaymentScope::class,
         'multiSignature'                => MultiSignatureScope::class,
         'secondSignature'               => SecondSignatureScope::class,
         'timelockClaim'                 => TimelockClaimScope::class,

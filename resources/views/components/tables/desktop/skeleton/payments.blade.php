@@ -1,7 +1,7 @@
 <x-table-skeleton
     device="desktop"
     :items="[
-        'general.transaction.recipient' => [
+        'general.transaction.transfer' => [
             'type' => 'address',
             'lastOn' => 'md',
         ],

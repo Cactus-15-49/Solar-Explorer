@@ -16,7 +16,10 @@ trait InteractsWithWallets
     public function recipient(): ?MemoryWallet
     {
         if (is_null($this->transaction->recipient_id)) {
-            return $this->sender();
+            if (is_null($this->transaction->asset) && is_null($this->transaction->asset['transfers'])) {
+                return $this->sender();
+            }
+            return MemoryWallet::fromAddress($this->transaction->asset['transfers'][0]['recipientId']);
         }
 
         return MemoryWallet::fromAddress($this->transaction->recipient_id);
