@@ -67,7 +67,7 @@ return [
         'participants'            => 'Participants',
         'vote'                    => 'Vote',
         'unvote'                  => 'Unvote',
-        'recipient_list'          => 'Recipient List',
+        'recipient_list'          => 'Transfers',
         'musig_participants'      => 'M-of-N Multisig',
         'musig_participants_text' => ':0 of :1',
         'name'                    => 'Name',

@@ -1,3 +1,7 @@
-<x-grid.generic :title="trans('general.transaction.recipient')" icon="wallet">
-    <x-number>{{ $model->recipientsCount() }}</x-number> @lang('general.transaction.recipients')
+<x-grid.generic :title="trans('general.transaction.transfers')" icon="wallet">
+    @if ($model->recipientsCount() === 1)
+        <x-number>{{ $model->recipientsCount() }}</x-number> Transfer
+    @else
+    <x-number>{{ $model->recipientsCount() }}</x-number> Transfers
+    @endif
 </x-grid.generic>
