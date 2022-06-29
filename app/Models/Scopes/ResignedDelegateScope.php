@@ -13,6 +13,7 @@ final class ResignedDelegateScope implements Scope
     public function apply(Builder $builder, Model $model)
     {
         $builder->whereNotNull('attributes->delegate->username');
-        $builder->where('attributes->delegate->resigned', true);
+        $builder->where('attributes->delegate->resigned', 0)
+        $builder->orWhere('attributes->delegate->resigned', 1);
     }
 }

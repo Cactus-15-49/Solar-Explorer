@@ -42,6 +42,7 @@ final class DelegateTabs extends Component
         return DB::connection('explorer')
             ->table('wallets')
             ->whereNotNull('attributes->delegate->username')
-            ->where('attributes->delegate->resigned', true);
+            ->where('attributes->delegate->resigned', 0)
+            ->orWhere('attributes->delegate->resigned', 1);
     }
 }
