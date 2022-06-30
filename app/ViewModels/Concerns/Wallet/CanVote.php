@@ -116,7 +116,7 @@ trait CanVote
         $weight = array();
 
         foreach ($votes as $votedDelegate => $percent) {
-            $weight[$votedDelegate] = floor(($balance * ~~($percent * 100)) / 10000);
+            $weight[$votedDelegate] = ~~($balance * $percent / 100);
         }
 
         foreach ($weight as $countedWeight) {
