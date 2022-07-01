@@ -16,7 +16,7 @@ final class VotePercentageAggregate implements Aggregate
         return (string) Percentage::calculate(
             (float) Wallet::query()
                 ->where('balance', '>', 0)
-                ->whereNotNull('attributes->vote')
+                ->where('attributes->votes', '<>', '{}')
                 ->sum('balance'),
             (float) CacheNetworkSupply::execute()
         );

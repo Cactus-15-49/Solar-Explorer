@@ -15,7 +15,7 @@
             </x-slot>
 
             <x-slot name="bottom">
-                @if($transaction->hasAmount())
+                @if($transaction->hasAmount() && !$transaction->isLegacyBusinessUpdate())
                     <div class="grid grid-cols-1 gap-y-8 xl:grid-cols-2">
                         <x-dynamic-component :component="$transaction->headerComponent()" :transaction="$transaction" />
                     </div>

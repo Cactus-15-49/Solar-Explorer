@@ -41,7 +41,7 @@ final class TransactionTypeIcon
         'isDelegateEntityUpdate'          => 'delegate-registration',
         'isLegacyBusinessRegistration'    => 'business',
         'isLegacyBusinessResignation'     => 'business',
-        'isLegacyBusinessUpdate'          => 'business',
+        'isLegacyBusinessUpdate'          => 'vote',
         'isLegacyBridgechainRegistration' => 'bridgechain',
         'isLegacyBridgechainResignation'  => 'bridgechain',
         'isLegacyBridgechainUpdate'       => 'bridgechain',

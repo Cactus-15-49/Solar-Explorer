@@ -17,6 +17,7 @@ use App\ViewModels\Concerns\Transaction\HasIcons;
 use App\ViewModels\Concerns\Transaction\HasState;
 use App\ViewModels\Concerns\Transaction\HasType;
 use App\ViewModels\Concerns\Transaction\InteractsWithDelegateRegistration;
+use App\ViewModels\Concerns\Transaction\InteractsWithDelegateResignation;
 use App\ViewModels\Concerns\Transaction\InteractsWithEntities;
 use App\ViewModels\Concerns\Transaction\InteractsWithMultiPayment;
 use App\ViewModels\Concerns\Transaction\InteractsWithMultiSignature;
@@ -34,6 +35,7 @@ final class TransactionViewModel implements ViewModel
     use HasState;
     use HasType;
     use InteractsWithDelegateRegistration;
+    use InteractsWithDelegateResignation;
     use InteractsWithEntities;
     use InteractsWithMultiPayment;
     use InteractsWithMultiSignature;
@@ -97,7 +99,7 @@ final class TransactionViewModel implements ViewModel
 
     public function amountForItself(): float
     {
-        return collect(Arr::get($this->transaction, 'asset.payments', []))
+        return collect(Arr::get($this->transaction, 'asset.transfers', []))
             ->filter(function ($payment): bool {
                 $sender = $this->sender();
 
@@ -108,7 +110,7 @@ final class TransactionViewModel implements ViewModel
 
     public function amountExcludingItself(): float
     {
-        return collect(Arr::get($this->transaction, 'asset.payments', []))
+        return collect(Arr::get($this->transaction, 'asset.transfers', []))
             ->filter(function ($payment): bool {
                 $sender = $this->sender();
 
@@ -120,7 +122,7 @@ final class TransactionViewModel implements ViewModel
     public function amount(): float
     {
         if ($this->isMultiPayment()) {
-            return collect(Arr::get($this->transaction, 'asset.payments', []))
+            return collect(Arr::get($this->transaction, 'asset.transfers', []))
                 ->sum('amount') / 1e8;
         }
 
@@ -130,7 +132,7 @@ final class TransactionViewModel implements ViewModel
     public function amountReceived(?string $wallet = null): float
     {
         if ($this->isMultiPayment() && $wallet !== null) {
-            return collect(Arr::get($this->transaction, 'asset.payments', []))
+            return collect(Arr::get($this->transaction, 'asset.transfers', []))
                 ->where('recipientId', $wallet)
                 ->sum('amount') / 1e8;
         }
@@ -161,5 +163,10 @@ final class TransactionViewModel implements ViewModel
     public function ipfsHash(): ?string
     {
         return Arr::get($this->transaction, 'asset.ipfs');
+    }
+
+    public function votes()
+    {
+        return Arr::get($this->transaction, 'asset.votes');
     }
 }

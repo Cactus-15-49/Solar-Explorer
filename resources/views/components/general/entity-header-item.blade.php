@@ -9,6 +9,7 @@
     'iconSize' => false,
     'avatar' => false,
     'truncate' => true,
+    'voteFor' => false,
 ])
 
 <div class="entity-header-item {{ $wrapperClass }}{{ $truncate ? ' overflow-x-auto truncate' : '' }}">
@@ -36,7 +37,7 @@
                 <span class="{{ $truncate ? 'truncate' : 'whitespace-nowrap' }}">{{ $text }}</span>
             </a>
         @else
-            <span class="leading-tight text-theme-secondary-900 dark:text-theme-secondary-200{{ $truncate ? ' truncate' : ' whitespace-nowrap' }} ">{{ $text }}</span>
+            <span style="{{ $voteFor ? 'white-space: initial' : '' }}" class="leading-tight text-theme-secondary-900 dark:text-theme-secondary-200{{ $voteFor ? '' : ($truncate ? ' truncate' : ' whitespace-nowrap') }} ">{{ $text }}</span>
         @endif
     </div>
 </div>

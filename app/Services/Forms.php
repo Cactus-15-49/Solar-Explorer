@@ -15,14 +15,12 @@ final class Forms
         'delegateRegistration',
         'delegateResignation',
         'vote',
-        'voteCombination',
         'multiSignature',
         'ipfs',
-        'multiPayment',
         'timelock',
         'timelockClaim',
         'timelockRefund',
-        'magistrate',
+        'burn',
     ];
 
     /**

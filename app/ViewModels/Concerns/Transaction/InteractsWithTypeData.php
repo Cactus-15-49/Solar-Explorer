@@ -67,7 +67,7 @@ trait InteractsWithTypeData
             return true;
         }
 
-        if ($this->isVoteCombination()) {
+        if ($this->isVoteCombination() || $this->isVote() || $this->isLegacyBusinessUpdate()) {
             return true;
         }
 

@@ -1,13 +1,19 @@
-<x-page-headers.transaction.icon-type :model="$transaction" />
-
 <x-general.entity-header-item
-    :title="trans('pages.transaction.vote')"
-    :avatar="$transaction->voted()->username()"
+    :title="trans('pages.transaction.transaction_type')"
+    icon="app-transactions.vote"
+    :wrapper-class="$wrapperClass ?? ''"
 >
     <x-slot name="text">
-        <a href="{{ route('wallet', $transaction->voted()->address()) }}" class="font-semibold link">
-            {{ $transaction->voted()->username() }}
-        </a>
+        Vote
+    </x-slot>
+</x-general.entity-header-item>
+
+<x-general.entity-header-item
+    title="Voting For"
+    icon="app-rank"
+>
+    <x-slot name="text">
+        1 Delegate
     </x-slot>
 </x-general.entity-header-item>
 

@@ -19,7 +19,7 @@ trait InteractsWithMultiPayment
             return [];
         }
 
-        return collect(Arr::get($this->transaction->asset, 'payments', []))
+        return collect(Arr::get($this->transaction->asset, 'transfers', []))
             ->map(fn ($payment) => new Payment($this->transaction->timestamp, $payment))
             ->toArray();
     }
@@ -34,6 +34,6 @@ trait InteractsWithMultiPayment
             return 0;
         }
 
-        return count(Arr::get($this->transaction->asset, 'payments'));
+        return count(Arr::get($this->transaction->asset, 'transfers'));
     }
 }

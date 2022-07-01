@@ -42,7 +42,11 @@ final class DelegateResignedTable extends Component
         return ViewModelFactory::paginate(
             Wallet::query()
                 ->whereNotNull('attributes->delegate->username')
-                ->where('attributes->delegate->resigned', true)
+                ->whereNotNull('attributes->delegate->username')
+                ->where(function ($query): void {
+                    $query->where('attributes->delegate->resigned', 0);
+                    $query->orWhere('attributes->delegate->resigned', 1);
+                })
                 ->paginate(Network::delegateCount())
         );
     }

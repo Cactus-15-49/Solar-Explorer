@@ -11,7 +11,7 @@ trait InteractsWithVendorField
      */
     public function vendorField(): ?string
     {
-        $vendorField = $this->transaction->vendor_field;
+        $vendorField = $this->transaction->memo;
 
         if (is_null($vendorField)) {
             return null;

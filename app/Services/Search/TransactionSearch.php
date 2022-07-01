@@ -52,7 +52,7 @@ final class TransactionSearch implements Search
                     });
 
                     $query->orWhere(function ($query) use ($parameters, $wallet): void {
-                        $query->whereJsonContains('asset->payments', [['recipientId' => $wallet->address]]);
+                        $query->whereJsonContains('asset->transfers', [['recipientId' => $wallet->address]]);
 
                         $this->applyScopes($query, $parameters);
                     });
@@ -102,7 +102,7 @@ final class TransactionSearch implements Search
         TimestampRangeComposer::compose($query, $parameters);
 
         if (! is_null(Arr::get($parameters, 'smartBridge'))) {
-            $query->where('vendor_field', $parameters['smartBridge']);
+            $query->where('memo', $parameters['smartBridge']);
         }
     }
 }

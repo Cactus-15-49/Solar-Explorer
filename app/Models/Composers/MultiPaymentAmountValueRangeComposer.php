@@ -22,7 +22,7 @@ final class MultiPaymentAmountValueRangeComposer
 
         $query->whereExists(function (\Illuminate\Database\Query\Builder $query) use ($to, $from): void {
             $query->selectRaw('i.id')
-                ->fromRaw("( SELECT id, (jsonb_array_elements(asset -> 'payments') ->> 'amount')::bigint am FROM transactions t WHERE t.id = id ) i")
+                ->fromRaw("( SELECT id, (jsonb_array_elements(asset -> 'transfers') ->> 'amount')::bigint am FROM transactions t WHERE t.id = id ) i")
                 ->whereRaw('i.id = transactions.id')
                 ->groupBy('i.id');
 
